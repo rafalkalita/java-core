@@ -22,11 +22,14 @@ public class Types {
 
         Types types = new Types();
 
-        types.printDefaultValues();
+        types.defaultValues();
+        types.boxingTypes();
+        types.minMaxSizeValues();
     }
 
-    private void printDefaultValues() {
+    private void defaultValues() {
 
+        println("\ndefaultValues");
         println("Default byte: " + bytePrimitiveType);
 
         println("Default short: " + shortPrimitiveType);
@@ -43,6 +46,54 @@ public class Types {
             println("charPrimitiveType default value is \\u0000");
         }
     }
+
+    private void boxingTypes() {
+
+        bytePrimitiveType = 1;
+        shortPrimitiveType = 2;
+        intPrimitiveType = 4;
+        longPrimitiveType = 5l;
+        floatPrimitiveType = 15.34f;
+        doublePrimitiveType = 123.456;
+        booleanPrimitiveType = true;
+        charPrimitiveType = 'a';
+
+        Byte byteBoxed = new Byte(bytePrimitiveType);
+        Short shortBoxed = new Short(shortPrimitiveType);
+        Integer intBoxed = new Integer(intPrimitiveType);
+        Long longBoxed = new Long(longPrimitiveType);
+
+        Float floatBoxed = new Float(floatPrimitiveType);
+        Double doubleBoxed = new Double(doublePrimitiveType);
+
+        Boolean boolanBoxed = new Boolean(booleanPrimitiveType);
+        Character charBoxed = new Character(charPrimitiveType);
+
+        println("\nboxingTypes");
+        println(byteBoxed.toString());
+        println(shortBoxed.toString());
+        println(intBoxed.toString());
+        println(longBoxed.toString());
+        println(floatBoxed.toString());
+        println(doubleBoxed.toString());
+        println(boolanBoxed.toString());
+        println(charBoxed.toString());
+
+    }
+
+    private void minMaxSizeValues() {
+
+        println("\nminMaxSizeValues");
+        println("[byte]    minValue: " + Byte.MIN_VALUE + "\t\t\t\t  maxValue: " + Byte.MAX_VALUE + " \t\t\t\t\t Size(bytes): " + Byte.SIZE/8);
+        println("[short]   minValue: " + Short.MIN_VALUE + "  \t\t\t  maxValue: " + Short.MAX_VALUE + "\t\t\t\t\t Size(bytes): " + Short.SIZE/8);
+        println("[int]     minValue: " + Integer.MIN_VALUE + "\t\t\t  maxValue: " + Integer.MAX_VALUE + "\t\t\t\t Size(bytes): " + Integer.SIZE/8);
+        println("[long]    minValue: " + Long.MIN_VALUE + "  maxValue: " + Long.MAX_VALUE + " \t Size(bytes): " + Long.SIZE/8);
+        println("[float]   minValue: " + Float.MIN_VALUE + " \t\t\t  maxValue: " + Float.MAX_VALUE + "\t\t\t Size(bytes): " + Float.SIZE/8);
+        println("[double]  minValue: " + Double.MIN_VALUE + "\t\t\t  maxValue: " + Double.MAX_VALUE + "\t Size(bytes): " + Double.SIZE/8);
+        println("[char]    minValue: \\u0000                maxValue: \\uffff \t\t\t\t\t Size(bytes): " + Character.SIZE/8);
+        println("[boolean]    Value: true or false \t\t\t\t\t\t\t\t\t\t\t Size: --");
+    }
+
 
     private void println(String text) {
         System.out.println(text);
