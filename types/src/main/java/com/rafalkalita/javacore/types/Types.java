@@ -1,5 +1,7 @@
 package com.rafalkalita.javacore.types;
 
+import java.math.BigDecimal;
+
 /**
  * User: rafalkalita
  * Date: 25/01/2014
@@ -25,6 +27,7 @@ public class Types {
         types.defaultValues();
         types.boxingTypes();
         types.minMaxSizeValues();
+        types.otherTypes();
     }
 
     private void defaultValues() {
@@ -92,6 +95,34 @@ public class Types {
         println("[double]  minValue: " + Double.MIN_VALUE + "\t\t\t  maxValue: " + Double.MAX_VALUE + "\t Size(bytes): " + Double.SIZE/8);
         println("[char]    minValue: \\u0000                maxValue: \\uffff \t\t\t\t\t Size(bytes): " + Character.SIZE/8);
         println("[boolean]    Value: true or false \t\t\t\t\t\t\t\t\t\t\t Size: --");
+    }
+
+    private void otherTypes() {
+
+        println("\n");
+
+        String name = "Rafa";
+
+        BigDecimal balance = new BigDecimal("987654432.12");
+        // use constructor with String
+        // BigDecimal is immutable
+        // BigDecimal.ROUND_HALF_EVEN introduces the least bias
+        println("balance is: " + balance.toString());
+
+        // don't use float or double to handle money
+        float f = 0.1f;
+        for(int i = 0; i<9; i++) {
+            f += 0.1f;
+        }
+        println("Sum of 0.1f ten times using float equals: " + f);
+
+        // use BigDecimal
+        BigDecimal value = new BigDecimal("0.1");
+        BigDecimal sum = new BigDecimal("0");
+        for(int i = 0; i<10; i++) {
+            sum = sum.add(value);
+        }
+        println("Sum of 0.1f ten times using BigDecimal equals: " + sum.toString());
     }
 
 
