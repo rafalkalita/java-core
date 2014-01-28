@@ -182,6 +182,17 @@ public class Types {
         println(Float.toString(RATEOFRETURN));
     }
 
+    public void casting() {
+        int i;
+        float f = 1.123F;
+        double d = 2.345;
+
+        println("\nCasting:");
+        println("Cast a float 1.123F to an int: " + Integer.toString((int)f));
+        println("Cast a double 2.345 to an int: " + Integer.toString((int)d));
+        println("Cast a double 2.345 to a float: " + Float.toString((float)d));
+    }
+
     private void printInt(int value, String numericLiteral) {
         println("decimal equivalent of " + numericLiteral + " is: " + Integer.toString(value));
     }

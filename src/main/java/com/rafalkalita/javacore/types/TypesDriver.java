@@ -18,5 +18,6 @@ public class TypesDriver {
         types.numericLiterals();
         types.characterLiterals();
         types.constants();
+        types.casting();
     }
 }
