@@ -20,17 +20,7 @@ public class Types {
     private boolean booleanPrimitiveType;
     private char charPrimitiveType;
 
-    public static void main(String [] args) {
-
-        Types types = new Types();
-
-        types.defaultValues();
-        types.boxingTypes();
-        types.minMaxSizeValues();
-        types.otherTypes();
-    }
-
-    private void defaultValues() {
+    public void defaultValues() {
 
         println("\ndefaultValues");
         println("Default byte: " + bytePrimitiveType);
@@ -50,7 +40,7 @@ public class Types {
         }
     }
 
-    private void boxingTypes() {
+    public void boxingTypes() {
 
         bytePrimitiveType = 1;
         shortPrimitiveType = 2;
@@ -61,16 +51,16 @@ public class Types {
         booleanPrimitiveType = true;
         charPrimitiveType = 'a';
 
-        Byte byteBoxed = new Byte(bytePrimitiveType);
-        Short shortBoxed = new Short(shortPrimitiveType);
-        Integer intBoxed = new Integer(intPrimitiveType);
-        Long longBoxed = new Long(longPrimitiveType);
+        Byte byteBoxed = bytePrimitiveType;
+        Short shortBoxed = shortPrimitiveType;
+        Integer intBoxed = intPrimitiveType;
+        Long longBoxed = longPrimitiveType;
 
-        Float floatBoxed = new Float(floatPrimitiveType);
-        Double doubleBoxed = new Double(doublePrimitiveType);
+        Float floatBoxed = floatPrimitiveType;
+        Double doubleBoxed = doublePrimitiveType;
 
-        Boolean boolanBoxed = new Boolean(booleanPrimitiveType);
-        Character charBoxed = new Character(charPrimitiveType);
+        Boolean boolanBoxed = booleanPrimitiveType;
+        Character charBoxed = charPrimitiveType;
 
         println("\nboxingTypes");
         println(byteBoxed.toString());
@@ -84,7 +74,7 @@ public class Types {
 
     }
 
-    private void minMaxSizeValues() {
+    public void minMaxSizeValues() {
 
         println("\nminMaxSizeValues");
         println("[byte]    minValue: " + Byte.MIN_VALUE + "\t\t\t\t  maxValue: " + Byte.MAX_VALUE + " \t\t\t\t\t Size(bytes): " + Byte.SIZE/8);
@@ -97,9 +87,9 @@ public class Types {
         println("[boolean]    Value: true or false \t\t\t\t\t\t\t\t\t\t\t Size: --");
     }
 
-    private void otherTypes() {
+    public void otherTypes() {
 
-        println("\n");
+        println("\notherTypes");
 
         String name = "Rafa";
 
@@ -125,6 +115,45 @@ public class Types {
         println("Sum of 0.1f ten times using BigDecimal equals: " + sum.toString());
     }
 
+    public void numericLiterals() {
+
+        println("\nnumericLiterals");
+
+        printInt(25, "25");
+        printInt(-235, "-235");
+        printInt(073, "073");
+        printInt(0x3F, "0x3F");
+        printInt(012, "012");
+
+        printFloat(23.5f, "23.5f");
+        printFloat(23.5F, "23.5F");
+
+        printDouble(23.5, "23.5");
+        printDouble(3.14, "3.14");
+        printDouble(35.05E13, "35.05E13");
+        printDouble(35.05E2, "35.05E2");
+        printDouble(10e6, "10e6");
+
+        printLong(10L, "10L");
+        printLong(0x10, "0x10");
+        printLong(0x10L, "0x10L");
+    }
+
+    private void printInt(int value, String numericLiteral) {
+        println("decimal equivalent of " + numericLiteral + " is: " + Integer.toString(value));
+    }
+
+    private void printDouble(double value, String numericLiteral) {
+        println("decimal equivalent of " + numericLiteral + " is: " + Double.toString(value));
+    }
+
+    private void printFloat(float value, String numericLiteral) {
+        println("decimal equivalent of " + numericLiteral + " is: " + Float.toString(value));
+    }
+
+    private void printLong(long value, String numericLiteral) {
+        println("decimal equivalent of " + numericLiteral + " is: " + Long.toString(value));
+    }
 
     private void println(String text) {
         System.out.println(text);
