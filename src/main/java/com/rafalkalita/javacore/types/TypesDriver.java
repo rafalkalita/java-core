@@ -16,5 +16,7 @@ public class TypesDriver {
         types.minMaxSizeValues();
         types.otherTypes();
         types.numericLiterals();
+        types.characterLiterals();
+        types.constants();
     }
 }

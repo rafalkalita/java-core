@@ -35,7 +35,7 @@ public class Types {
         println("Default boolean: " + booleanPrimitiveType);
         println("Default char: " + charPrimitiveType);
 
-        if( new Character(charPrimitiveType).compareTo("\u0000".charAt(0)) == 0){
+        if (new Character(charPrimitiveType).compareTo("\u0000".charAt(0)) == 0) {
             println("charPrimitiveType default value is \\u0000");
         }
     }
@@ -77,13 +77,13 @@ public class Types {
     public void minMaxSizeValues() {
 
         println("\nminMaxSizeValues");
-        println("[byte]    minValue: " + Byte.MIN_VALUE + "\t\t\t\t  maxValue: " + Byte.MAX_VALUE + " \t\t\t\t\t Size(bytes): " + Byte.SIZE/8);
-        println("[short]   minValue: " + Short.MIN_VALUE + "  \t\t\t  maxValue: " + Short.MAX_VALUE + "\t\t\t\t\t Size(bytes): " + Short.SIZE/8);
-        println("[int]     minValue: " + Integer.MIN_VALUE + "\t\t\t  maxValue: " + Integer.MAX_VALUE + "\t\t\t\t Size(bytes): " + Integer.SIZE/8);
-        println("[long]    minValue: " + Long.MIN_VALUE + "  maxValue: " + Long.MAX_VALUE + " \t Size(bytes): " + Long.SIZE/8);
-        println("[float]   minValue: " + Float.MIN_VALUE + " \t\t\t  maxValue: " + Float.MAX_VALUE + "\t\t\t Size(bytes): " + Float.SIZE/8);
-        println("[double]  minValue: " + Double.MIN_VALUE + "\t\t\t  maxValue: " + Double.MAX_VALUE + "\t Size(bytes): " + Double.SIZE/8);
-        println("[char]    minValue: \\u0000                maxValue: \\uffff \t\t\t\t\t Size(bytes): " + Character.SIZE/8);
+        println("[byte]    minValue: " + Byte.MIN_VALUE + "\t\t\t\t  maxValue: " + Byte.MAX_VALUE + " \t\t\t\t\t Size(bytes): " + Byte.SIZE / 8);
+        println("[short]   minValue: " + Short.MIN_VALUE + "  \t\t\t  maxValue: " + Short.MAX_VALUE + "\t\t\t\t\t Size(bytes): " + Short.SIZE / 8);
+        println("[int]     minValue: " + Integer.MIN_VALUE + "\t\t\t  maxValue: " + Integer.MAX_VALUE + "\t\t\t\t Size(bytes): " + Integer.SIZE / 8);
+        println("[long]    minValue: " + Long.MIN_VALUE + "  maxValue: " + Long.MAX_VALUE + " \t Size(bytes): " + Long.SIZE / 8);
+        println("[float]   minValue: " + Float.MIN_VALUE + " \t\t\t  maxValue: " + Float.MAX_VALUE + "\t\t\t Size(bytes): " + Float.SIZE / 8);
+        println("[double]  minValue: " + Double.MIN_VALUE + "\t\t\t  maxValue: " + Double.MAX_VALUE + "\t Size(bytes): " + Double.SIZE / 8);
+        println("[char]    minValue: \\u0000                maxValue: \\uffff \t\t\t\t\t Size(bytes): " + Character.SIZE / 8);
         println("[boolean]    Value: true or false \t\t\t\t\t\t\t\t\t\t\t Size: --");
     }
 
@@ -101,7 +101,7 @@ public class Types {
 
         // don't use float or double to handle money
         float f = 0.1f;
-        for(int i = 0; i<9; i++) {
+        for (int i = 0; i < 9; i++) {
             f += 0.1f;
         }
         println("Sum of 0.1f ten times using float equals: " + f);
@@ -109,7 +109,7 @@ public class Types {
         // use BigDecimal
         BigDecimal value = new BigDecimal("0.1");
         BigDecimal sum = new BigDecimal("0");
-        for(int i = 0; i<10; i++) {
+        for (int i = 0; i < 10; i++) {
             sum = sum.add(value);
         }
         println("Sum of 0.1f ten times using BigDecimal equals: " + sum.toString());
@@ -137,6 +137,49 @@ public class Types {
         printLong(10L, "10L");
         printLong(0x10, "0x10");
         printLong(0x10L, "0x10L");
+
+        println("\nnumericLiterals added in Java 7:");
+        printInt(11_22_33, "11_22_33");
+        printLong(111_22_3333L, "111_22_3333L");
+        printInt(0b0110_00_1, "0b0110_00_1");
+
+        printFloat(3.14_15F, "3.14_15F");
+        /**
+         * consecutive underscores are treated as one and also ignored by the compiler
+         * Underscores cannot be placed:
+         * - At the beginning or end of a number
+         * - Adjacent to a decimal point
+         * - Prior to the D, F, or L suffix
+         */
+
+        // using a mask:
+        byte value = (byte) 0b0111_1010;
+        byte result = (byte) (value & 0b0000_1111);
+        printInt(result, "0b0111_1010 & 0b0000_1111");
+    }
+
+    public void characterLiterals() {
+
+        println("\ncharacterLiterals");
+        println("\b backspace");
+        println("\f form feed");
+        println("\n new line");
+        println("\r carriage return");
+        println("\t horizontal tab");
+        println("\\ backslash");
+        println("\' single quote");
+        println("\" double quote");
+    }
+
+    public void constants() {
+        final double PI = 3.14159;
+        final int NUMSHIPS = 120;
+        final float RATEOFRETURN = 0.125F;
+
+        println("\nConstants:");
+        println(Double.toString(PI));
+        println(Integer.toString(NUMSHIPS));
+        println(Float.toString(RATEOFRETURN));
     }
 
     private void printInt(int value, String numericLiteral) {
