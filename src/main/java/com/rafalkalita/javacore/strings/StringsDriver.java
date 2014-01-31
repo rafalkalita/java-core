@@ -14,5 +14,6 @@ public class StringsDriver {
         strings.comparison();
         strings.searching();
         strings.encoding();
+        strings.numbers();
     }
 }

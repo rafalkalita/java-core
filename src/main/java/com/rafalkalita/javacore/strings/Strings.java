@@ -86,6 +86,30 @@ public class Strings {
         System.out.println("Grey cat is lazy".replace("Grey", "Black").replace("lazy", "smart"));
     }
 
+    public void numbers() {
+
+        String s1 = String.valueOf(123);
+        String s2 = String.valueOf(3.1415);
+
+        int valueInt = Integer.valueOf("123");
+        double valueInt1 = Integer.valueOf("123").doubleValue();
+        double valueDouble = Double.valueOf("3.1415");
+
+        System.out.println("\nNumbers");
+
+        System.out.println(s1);
+        System.out.println(s2);
+        System.out.println(valueInt);
+        System.out.println(valueInt1);
+        System.out.println(valueDouble);
+
+
+        int num1 = Integer.parseInt("560");
+        double num2 = Double.parseDouble("2.06784");
+        System.out.println(num1);
+        System.out.println(num2);
+    }
+
     public void encoding() {
 
         String rafal = "Rafa\u0142";
