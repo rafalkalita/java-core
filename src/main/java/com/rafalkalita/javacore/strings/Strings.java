@@ -110,6 +110,28 @@ public class Strings {
         System.out.println(num2);
     }
 
+    /**
+     * StringBuffer is mutable and synchronized, so it is thread-safe
+     * StringBuilder is mutable but it is not synchronized.
+     */
+    public void stringBufferAndBuilder() {
+
+        StringBuffer buffer = new StringBuffer("some string");
+        StringBuffer buffer1 = new StringBuffer();
+        buffer1.append("This is ");
+        buffer1.append(buffer);
+
+        System.out.println("\nStringBufferAndBuilder");
+
+        System.out.println(buffer1);
+
+        buffer1.insert(13, "short ");
+        System.out.println(buffer1);
+
+        StringBuilder stringBuilder = new StringBuilder("esrever");
+        System.out.println(stringBuilder.reverse());
+    }
+
     public void encoding() {
 
         String rafal = "Rafa\u0142";

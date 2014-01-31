@@ -15,5 +15,6 @@ public class StringsDriver {
         strings.searching();
         strings.encoding();
         strings.numbers();
+        strings.stringBufferAndBuilder();
     }
 }
