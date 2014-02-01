@@ -193,6 +193,75 @@ public class Types {
         println("Cast a double 2.345 to a float: " + Float.toString((float)d));
     }
 
+    public void floatingPointValues() {
+
+        println("\nFloatingPointValues");
+        println(String.valueOf(Math.sqrt(-2.3))); // NaN
+        println(String.valueOf(3.14/0)); // Infinity
+        println(String.valueOf(-3.14/0)); // -Infinity
+
+        println("\n");
+
+        float num1 = 0.0f;
+        println(num1 / 0.0f); // NaN
+        println(Math.sqrt(-4)); // NaN
+        println(Double.NaN + Double.NaN); // NaN
+        println(Float.NaN + 2); // NaN
+        println((int) Double.NaN); // 0
+
+        println("\n");
+
+        println(Float.NEGATIVE_INFINITY); // -Infinity
+        println(Double.NEGATIVE_INFINITY); // -Infinity
+        println(Float.POSITIVE_INFINITY); // Infinity
+        println(Double.POSITIVE_INFINITY); // Infinity
+        println(Float.POSITIVE_INFINITY + 2); // Infinity
+        println(1.0 / 0.0); // Infinity
+        println((1.0 / 0.0) - (1.0 / 0.0)); // NaN
+        println(23.0f / 0.0f); // Infinity
+        println((int) (1.0 / 0.0)); // 2147483647
+        println(Float.NEGATIVE_INFINITY == Double.NEGATIVE_INFINITY); // true
+
+        println("\n");
+
+        println(-1.0f / Float.POSITIVE_INFINITY); // -0.0
+        println(1.0f / Float.NEGATIVE_INFINITY); // -0.0
+        println(1.0f / Float.POSITIVE_INFINITY); // 0.0
+
+        println(0 == -0); // true
+
+        println("\n");
+        double num2 = 1.2f;
+        double num3 = 0.2f;
+        println((num2 / num3) == 6); // false
+
+        float epsilon = 0.000001f;
+        if (Math.abs((num2 / num3) - 6) < epsilon) {
+            println("They are effectively equal");
+        } else {
+            println("They are not equal");
+        }
+
+        // order
+        println(new Float(Float.NEGATIVE_INFINITY).compareTo(-2.0f)); // -1
+        println((new Float(-2.0)).compareTo(-0.0f)); // -1
+        println((new Float(-0.0)).compareTo(0.0f)); // -1
+        println((new Float(0.0)).compareTo(2.0f)); // -1
+        println((new Float(2.0)).compareTo(Float.POSITIVE_INFINITY)); // -1
+        println((new Float(Float.POSITIVE_INFINITY)).compareTo(Float.NaN)); // -1
+
+        calculateFloatingPointValueUsingIEEE();
+    }
+
+    // use strictfp on a class interface or a method to make calculations abide IEEE standard
+    private strictfp void calculateFloatingPointValueUsingIEEE() {
+        float sum = 0.0f;
+        for(int i = 0; i < 10; i++) {
+            sum += 0.1f;
+        }
+        println(sum);
+    }
+
     private void printInt(int value, String numericLiteral) {
         println("decimal equivalent of " + numericLiteral + " is: " + Integer.toString(value));
     }
@@ -211,5 +280,21 @@ public class Types {
 
     private void println(String text) {
         System.out.println(text);
+    }
+
+    private void println(double value) {
+        System.out.println(String.valueOf(value));
+    }
+
+    private void println(float value) {
+        System.out.println(String.valueOf(value));
+    }
+
+    private void println(int value) {
+        System.out.println(String.valueOf(value));
+    }
+
+    private void println(boolean value) {
+        System.out.println(String.valueOf(value));
     }
 }

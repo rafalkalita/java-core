@@ -19,5 +19,6 @@ public class TypesDriver {
         types.characterLiterals();
         types.constants();
         types.casting();
+        types.floatingPointValues();
     }
 }
