@@ -174,6 +174,75 @@ public class Arrays {
         System.out.println(java.util.Arrays.deepEquals(grades1, grades2));
     }
 
+    public void copyingArrays() {
+
+        int numbers[] = {1,2,3,4,5};
+        int numbersCopy[] = new int[5];
+
+        // shallow copy is when only references are copied
+        // deep copy is when a new copy of the whole object is created
+
+        println("Simple element-by-element copy - Tedious but can implement either a shallow or deep copy");
+        for(int i=0; i<5; i++) {
+            numbersCopy[i] = numbers[i]; // shallow copy
+        }
+        printIntArray(numbersCopy);
+
+        for(int i=0; i<5; i++) {
+            numbersCopy[i] = new Integer(numbers[i]); // deep copy
+        }
+        printIntArray(numbersCopy);
+
+
+        println("Using the System.arraycopy method - Performs a shallow copy");
+        // System.arrayCopy method(copies references only)
+        // public static native void arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length);
+        java.util.Arrays.fill(numbersCopy, 0);
+        System.arraycopy(numbers, 0, numbersCopy, 0, 5);
+        printIntArray(numbersCopy);
+
+        java.util.Arrays.fill(numbersCopy, 0);
+        System.arraycopy(numbers, 0, numbersCopy, 2, 3);
+        printIntArray(numbersCopy);
+
+        java.util.Arrays.fill(numbersCopy, 0);
+        System.arraycopy(numbers, 0, numbersCopy, 3, 2);
+        printIntArray(numbersCopy);
+
+
+        println("Using the Arrays.copyOf method - Performs a deep copy of the entire array");
+        int arr[];
+        // copyOf can trim the array
+        arr = java.util.Arrays.copyOf(numbers, 3);
+        printIntArray(arr);
+
+        // if newLength is greater then array length the remaining elements will be set to zeros
+        arr = java.util.Arrays.copyOf(numbers, 10);
+        printIntArray(arr);
+
+
+        println("Using the Arrays.copyOfRange method - Performs a deep copy of part of an array");
+        int arr2[];
+        // copyOfRange copies 5-3 elements starting from index 3
+        arr2 = java.util.Arrays.copyOfRange(numbers, 3, 5);
+        printIntArray(arr2);
+
+        // if we specify more elements to copy, new array will be padded with zeros
+        arr2 = java.util.Arrays.copyOfRange(numbers, 3, 8);
+        printIntArray(arr2);
+
+        println("Using the clone method - Performs a shallow copy");
+        arr2 = numbers.clone();
+        printIntArray(arr2);
+    }
+
+    private void printIntArray(int[] a) {
+        for(int i=0; i<a.length; i++) {
+            System.out.printf("%d ", a[i]);
+        }
+        System.out.println();
+    }
+
     private void grades(int[][] grades) {
 
         grades[0] = new int[COLS];
@@ -185,6 +254,8 @@ public class Arrays {
         grades[1][1] = 4;
         grades[1][2] = 5;
     }
+
+
 
     class Person {
 
@@ -221,5 +292,9 @@ public class Arrays {
         public int hashCode() {
             return name != null ? name.hashCode() : 0;
         }
+    }
+
+    private void println(String s) {
+        System.out.println(s);
     }
 }

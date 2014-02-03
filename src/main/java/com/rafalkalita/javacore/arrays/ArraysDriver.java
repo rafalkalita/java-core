@@ -14,5 +14,6 @@ public class ArraysDriver {
         arrays.multidimensional();
         arrays.traversing();
         arrays.comparingArrays();
+        arrays.copyingArrays();
     }
 }
