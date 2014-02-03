@@ -13,5 +13,6 @@ public class ArraysDriver {
         arrays.declaration();
         arrays.multidimensional();
         arrays.traversing();
+        arrays.comparingArrays();
     }
 }
