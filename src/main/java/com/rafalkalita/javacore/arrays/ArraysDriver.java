@@ -15,5 +15,7 @@ public class ArraysDriver {
         arrays.traversing();
         arrays.comparingArrays();
         arrays.copyingArrays();
+        arrays.passingArraysToMethods();
+        arrays.otherArrayMethods();
     }
 }

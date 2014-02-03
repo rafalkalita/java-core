@@ -1,5 +1,8 @@
 package com.rafalkalita.javacore.arrays;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * User: rafalkalita
  * Date: 03/02/2014
@@ -236,6 +239,66 @@ public class Arrays {
         printIntArray(arr2);
     }
 
+    public void passingArraysToMethods() {
+
+        Person people[] = {new Person("Mike"), new Person("Maria")};
+
+        for(Person person: people) {
+            System.out.println(person);
+        }
+
+        // array references are copied by value
+        // the way to create a new array is to return a new instance
+        Person[] result = addNumberOfLetters(people);
+
+        for(Person person: people) {
+            System.out.println(person);
+        }
+
+        for(Person person: result) {
+            System.out.println(person);
+        }
+    }
+
+    public void otherArrayMethods() {
+
+        println("\nOtherArrayMethods");
+
+        int arr1[] = new int[5];
+        ArrayList list = new ArrayList();
+
+        list.add("item 1");
+        list.add("item 2");
+
+        Object arr2[] = {"item 3", new Integer(5), list};
+        String arr3[] = {"Pine", "Oak", "Maple", "Walnut"};
+
+        java.util.Arrays.fill(arr1,5); // fills all elements with a given value
+
+        List<String> woodColors = java.util.Arrays.asList(arr3);
+        System.out.println(woodColors);
+        System.out.println(java.util.Arrays.toString(arr1));
+        System.out.println(java.util.Arrays.deepToString(arr2));
+
+        List list2 = java.util.Arrays.asList(arr3);
+        list2.set(0, "Birch");
+        System.out.println(java.util.Arrays.toString(arr3));
+    }
+
+    private Person[] addNumberOfLetters(Person[] people) {
+        Person peopleNew[] = new Person[people.length];
+
+        for(Person person: people) {
+            person = new Person(person.getName() + person.getName().length());
+            System.out.println(person);
+        }
+
+        for(int i=0;i<people.length;i++) {
+            peopleNew[i] = new Person(people[i].getName() + people[i].getName().length());
+        }
+        return peopleNew;
+    }
+
     private void printIntArray(int[] a) {
         for(int i=0; i<a.length; i++) {
             System.out.printf("%d ", a[i]);
@@ -254,8 +317,6 @@ public class Arrays {
         grades[1][1] = 4;
         grades[1][2] = 5;
     }
-
-
 
     class Person {
 
