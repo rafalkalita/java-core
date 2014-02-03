@@ -77,5 +77,62 @@ public class Arrays {
         for(int i = 0; i < ages.length; i++) {
             System.out.println(ages[i]);
         }
+
+        System.out.println();
+        int i=0;
+        while(i<5) {
+            System.out.println(ages[i++]);
+        }
+
+        /**
+         * for-each does copy elements by value
+         */
+        System.out.println();
+        for(int number : ages) {
+            number = number * number;
+            System.out.println(number);
+        }
+        for(int j = 0; j < ages.length; j++) {
+            System.out.println(ages[j]);
+            ages[j] = ages[j] + 100;
+        }
+        for(int j = 0; j < ages.length; j++) {
+            System.out.println(ages[j]);
+        }
+
+        /**
+         * when you use reference in for-each loop it will modify the real object
+         */
+        System.out.println();
+        Person[] people = {new Person("John"), new Person("Rafal")};
+
+        for(Person person: people) {
+            System.out.println(person);
+            person.setName(person.getName() + " Modified");
+        }
+
+        for(int j = 0; j < people.length; j++) {
+            System.out.println(people[j]);
+        }
+    }
+
+    class Person {
+
+        String name;
+
+        public Person(String name) {
+            this.name = name;
+        }
+        public String getName() {
+            return this.name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Person{name='" + name + '\'' + '}';
+        }
     }
 }
